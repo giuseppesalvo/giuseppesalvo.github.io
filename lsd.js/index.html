@@ -43,6 +43,7 @@ h1, a {
 	display: block;
 	width: 100%; height: auto;
 	line-height: 32px;
+	text-decoration: none;
 }
 
 h1 {
@@ -59,12 +60,11 @@ h1 {
   -webkit-background-clip: text;
   -webkit-animation: stripes 2s linear infinite;
   animation: stripes 2s linear infinite;
+  transform-origin: left center;
+  -webkit-transform-origin: left center;
 }
 
-.text-texture:hover {
-  background-image: -webkit-linear-gradient(black 50%, black 50%);
-}
-
+/* MOVE STRIPES */
 @-webkit-keyframes stripes {
   100% {
     background-position: 0 -24px;
@@ -77,11 +77,40 @@ h1 {
   }
 }
 
+/* PULSE ON HOVER */
+.text-texture:hover {
+  background-image: -webkit-linear-gradient(black 50%, black 50%);
+  -webkit-animation: stripesPulse 2s linear infinite alternate;
+  animation: stripesPulse 2s linear infinite alternate;
+}
+
+@-webkit-keyframes stripesPulse {
+  0% {
+    background-position: 0 0;
+    -webkit-transform: scale(1);
+  }
+  100% {
+    background-position: 0 -24px;
+    -webkit-transform: scale(1.2);
+  }
+}
+
+@keyframes stripesPulse {
+  0% {
+    background-position: 0 0;
+    transform: scale(1);
+  }
+  100% {
+    background-position: 0 -24px;
+    transform: scale(1.2);
+  }
+}
+
 </style>
 
 <body>
 
-	<div id="lsd-background" data-img="https://github.com/giuseppesalvo/giuseppesalvo.github.io/raw/master/lsd.js/images/smiling.jpg"></div>
+	<div id="lsd-background" lsd-img="https://github.com/giuseppesalvo/giuseppesalvo.github.io/raw/master/lsd.js/images/smiling.jpg"></div>
 
 	<h1 class="text-texture"> LSD.js </h1>
 	<a class="text-texture" href="https://github.com/giuseppesalvo/lsd.js/" target="_blank"> view on github </a>
